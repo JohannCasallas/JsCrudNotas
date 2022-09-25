@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--CCS Bootstrap Styles-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styele.css">
+    <title>Promedio de Notas</title>
+</head>
+
+<body>
+    <div class="container col-8 my-5 br-2 rounded">
+        <div class="row g-3">
+            <div class="col-6 order-md-last">
+                <div class="card text-center bg-primary">
+                    <h3>Web developer</h3>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between">
+                        <div class="mx-auto d-block">
+                            <img src="https://img-21.ccm2.net/3QNmHyK05T4Uo5B6GN8anRlP8n8=/500x/1bf7d1aafc2c4ccd991f47365636ca6f/ccm-faq/forms.jpeg"
+                                class="col-3 col-md-12">
+                        </div>
+
+                    </li>
+
+                    <li class="list-group-item d-flex justify-content-between">
+                        <div>
+                            <h6>Creador:</h6>
+                        </div>
+                        <span class="text-muted">Johann Casallas</span>
+                    </li>
+
+                    <li class="list-group-item d-flex justify-content-between">
+                        <div>
+                            <h6>Prueba:</h6>
+                        </div>
+                        <span class="text-muted">Promedio de Notas</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <div>
+                            <h6>Empresa:</h6>
+                        </div>
+                        <span class="text-muted">INFOTRACK</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <div>
+                            <h6>Fecha:</h6>
+                        </div>
+                        <span class="text-muted">12 de septiembre 2022</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-6">
+                <div class="card bg-primary text-center">
+                    <h3>Notas</h3>
+                </div>
+                <form class="row g-3 needs-validation" novalidate>
+                    <div class="row">
+                        <div class="col-12 mt-3">
+                            <label class="form-label" for="firstname">Nombre completo del estudiante</label>
+                            <input type="text" id="nombre" class="form-control" required>
+                            <div class="invalid-feedback">
+                                Ingrese el Nombre del Estudiante
+                            </div>
+                        </div>
+
+                        <div class="col-4 mt-3">
+                            <label class="form-label" for="zip">Matematicas</label>
+                            <input type="number" id="nota1" class="form-control" required>
+                            <div class="invalid-feedback">
+                                Obligatorio
+                            </div>
+                        </div>
+                        <div class="col-4 mt-3">
+                            <label class="form-label" for="zip">Español</label>
+                            <input type="number" id="nota2" class="form-control" required>
+                            <div class="invalid-feedback">
+                                Obligatorio
+                            </div>
+                        </div>
+                        <div class="col-4 mt-3">
+                            <label class="form-label" for="zip">Geografia</label>
+                            <input type="number" id="nota3" class="form-control" required>
+                            <div class="invalid-feedback">
+                                Obligatorio
+                            </div>
+                        </div>
+
+                    </div>
+                    <hr class="mt-5">
+                    <div class="form-check">
+                        <label class="form-check-label">Introduzca la nota correspondiente a cada materia, tenga en
+                            cuenta que la casilla solo aceptara números de 1 a 10, el botón promedio arrojara su nota
+                            final.</label>
+                    </div>
+                    <hr>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                        <button class="btn btn-primary btn-block mb-4" onclick="agregarNotas();">Promedio</button>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+        <hr>
+        <div class="card bg-primary text-center">
+            <h4>Resultados</h4>
+        </div>
+        <div class="car-footer p-2">
+
+            <table class="table table-striped table-striped mt-3 ">
+                <thead class="text-center font-weight-bold">
+                    <tr class="bg-secondary text-white">
+                        <td>Nombre</td>
+                        <td>Nota 1</td>
+                        <td>Nota 2</td>
+                        <td>Nota 3</td>
+                        <td>Promedio</td>
+                        <td>Observación</td>
+                    </tr>
+                </thead>
+                <tbody id="addtabla">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="js/promediar.js"></script>
+    <script>
+        //  inicia para deshabilitar el envío de formularios si hay campos no válidos
+        (function () {
+            'use strict'
+
+
+            // Obtener todos los formularios a los que queremos aplicar estilos de validación y Bootstrap 
+            let forms = document.querySelectorAll('.needs-validation')
+
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+    </script>
+    <!-- Script de bootsatrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+    <!-- Script de sweet alrt -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</body>
+
+</html>
